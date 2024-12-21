@@ -61,7 +61,7 @@ You can run tfpecker using Docker in two ways:
 ### Using pre-built image from GitHub Container Registry:
 ```bash
 # Pull the image
-docker pull ghcr.io/martiGIT/tfpecker:latest
+docker pull ghcr.io/martigit/tfpecker:latest
 
 # Run it (mount your Terraform directory)
 docker run -v $(pwd):/terraform -w /terraform ghcr.io/martiGIT/tfpecker:latest
