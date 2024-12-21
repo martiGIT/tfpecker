@@ -16,7 +16,7 @@ A simple tool for preparing Terraform code for LLM (Large Language Model) analys
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/tfpecker
+git clone https://github.com/martiGIT/tfpecker
 cd tfpecker
 
 # Make the script executable (Linux/Mac)
