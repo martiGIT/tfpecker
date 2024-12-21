@@ -54,6 +54,42 @@ python tfpecker.py --include-readme
 python tfpecker.py --path /project --output output.txt --remove-comments --include-tfvars --include-readme
 ```
 
+## Docker Usage
+
+You can run tfpecker using Docker in two ways:
+
+### Using pre-built image from GitHub Container Registry:
+```bash
+# Pull the image
+docker pull ghcr.io/martiGIT/tfpecker:latest
+
+# Run it (mount your Terraform directory)
+docker run -v $(pwd):/terraform -w /terraform ghcr.io/martiGIT/tfpecker:latest
+```
+
+### Build and run locally:
+```bash
+# Build
+docker build -t tfpecker .
+
+# Run
+docker run -v $(pwd):/terraform -w /terraform tfpecker
+```
+
+All CLI options work the same way:
+```bash
+# Examples with options
+docker run -v $(pwd):/terraform -w /terraform tfpecker --remove-comments
+docker run -v $(pwd):/terraform -w /terraform tfpecker --include-readme
+docker run -v $(pwd):/terraform -w /terraform tfpecker --output custom-output.txt
+```
+
+Note: Generated files will have root:root ownership as they are created inside the container.
+You can avoid it using:
+```bash
+docker run -v $(pwd):/terraform -w /terraform --user $(id -u):$(id -g) ghcr.io/martiGIT/tfpecker:latest
+```
+
 ## Security Notice ⚠️
 
 This tool includes basic checks for potential secrets and provides warnings:
